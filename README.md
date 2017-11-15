@@ -1,0 +1,2 @@
+# mykp
+Project Kerja Praktek, dibuat guna mengimplementasikan ilmu yang telah dipelajari dan merealisasikan ide/gagasan, serta memenuhi syarat untuk menempuh Skripsi pada Program Studi Teknik Informatika

@@ -35,4 +35,10 @@ class Demo extends CI_Controller {
 	public function booking(){
 		$this->load->view('demo/booking');
 	}
+	public function agenda(){
+		$this->load->view('demo/agenda');
+	}
+	public function galeri(){
+		$this->load->view('demo/galeri');
+	}
 }

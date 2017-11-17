@@ -57,6 +57,12 @@
 			 <li class="nav-item">
               <a class="nav-link" href="<?=base_url()?>demo/booking">Booking</a>
             </li>
+			<li class="nav-item">
+              <a class="nav-link" href="<?=base_url()?>demo/agenda">Agenda</a>
+            </li>
+			<li class="nav-item">
+              <a class="nav-link" href="<?=base_url()?>demo/galeri">Galeri</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="<?=base_url()?>demo/contact">Contact</a>
             </li>

@@ -23,13 +23,24 @@ $this->load->view('admin/header');
           <!-- Drop Zone -->
           <h4>Or drag and drop files below</h4>
           <div class="upload-drop-zone" id="drop-zone">
-            Just drag and drop files here
 <?php 
 $src_img = $upload_data['full_path'];
-echo thumb($src_img, 200, 100); // outputs image_thumb.jpg 
+$thumb = $upload_data['file_path'].'thumbs/'.$upload_data['file_name'];
+echo thumb($src_img, 200, 100, $thumb); // outputs image_thumb.jpg 
 ?>
-<img src="<?php echo base_url('/uploads/'.thumb($src_img, 200, 100)); ?>">
-          </div>
+
+<!-- Show All Image in uploads -->
+<?php 
+$dir = './uploads/thumbs'; // Your Path to folder
+$map = directory_map($dir); /* This function reads the directory path specified in the first parameter and builds an array representation of it and all its contained files. */
+
+foreach ($map as $k)
+	  {?>
+     <img src="<?php echo base_url($dir)."/".$k;?>" alt="">
+<?php }
+          
+?> 
+</div>
 
           <!-- Upload Finished -->
           <div class="js-upload-finished">

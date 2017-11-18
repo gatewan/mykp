@@ -50,7 +50,7 @@
                     <a href="#">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#">Slider</a>
+                    <a href="<?=base_url()?>admin/slider">Slider</a>
                 </li>
                 <li>
                     <a href="#">Overview</a>

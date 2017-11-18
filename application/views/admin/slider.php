@@ -23,7 +23,19 @@
           <!-- Drop Zone -->
           <h4>Or drag and drop files below</h4>
           <div class="upload-drop-zone" id="drop-zone">
-            Just drag and drop files here
+  
+<!-- Show All Image in uploads -->
+<?php 
+$dir = './uploads/thumbs'; // Your Path to folder
+$map = directory_map($dir); /* This function reads the directory path specified in the first parameter and builds an array representation of it and all its contained files. */
+
+foreach ($map as $k)
+	  {?>
+     <img src="<?php echo base_url($dir)."/".$k;?>" alt="">
+<?php }
+          
+?> 
+</div>
           </div>
 
         </div>

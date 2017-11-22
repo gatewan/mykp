@@ -43,8 +43,8 @@ class Admin extends CI_Controller {
                 $config['upload_path']          = './uploads/';
                 $config['allowed_types']        = 'gif|jpg|png';
                 $config['max_size']             = 100;
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;		
+                $config['max_width']            = 1900;
+                $config['max_height']           = 1080;		
 				$config['file_name'] = $nmfile; //nama yang terupload nantinya
 				
                 $this->load->library('upload', $config);
@@ -80,7 +80,7 @@ END DISABLE*/
 				
                 $this->Mupload->get_insert($data); //akses model untuk menyimpan ke database
                 //pesan yang muncul jika berhasil diupload pada session flashdata
-                $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-success\" id=\"alert\">Upload gambar berhasil !!</div></div>");
+                $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-success\" id=\"alert\">Upload gambar berhasil DAB!!!</div></div>");
 			   // redirect('admin/upload_success'); //jika berhasil maka akan ditampilkan view vupload
 			    $this->load->view('admin/upload_success', $thumbs);
             }else{
@@ -111,13 +111,27 @@ END DISABLE*/
 		else {
 			//pesan yang muncul jika terdapat error dimasukkan pada session flashdata
             $msgn = $this->session->set_flashdata("pesan", "<div class=\"col-md-12\"><div class=\"alert alert-danger\" id=\"alert\">Gagal DELETE Gambar COOY!!</div></div>");
-			redirect('admin/slider',$msg);
+			redirect('admin/slider',$msgn);
 		}
 		
 		//delete_files($path);
 		//unlink('./uploads/thumbs/'.$rowdel['isi']->nm_gbr);
-		
-        
-		
+	
     }	
+	
+	public function edit_gb($id){
+		$rowed['isi'] = $this->Mupload->get_byimage($id);
+		$this->load->view('admin/vedit_gb',$rowed);
+		}
+		
+	public function update_gb(){
+			$idg  = $this->input->post('idgbr');
+			$ket = $this->input->post('textket');
+			$data = array(				
+                'ket_gbr' 		=> $ket
+            );
+            $this->Mupload->get_update_gb($idg,$data); //modal update data article
+            $msgp = $this->session->set_flashdata("pesan", "<div class=\"alert alert-success\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Keterangan gambar berhasil diupdate GAN!!!</div>"); //pesan yang tampil setelah berhasil di update
+            redirect('admin/slider',$msgp);
+	}
 }

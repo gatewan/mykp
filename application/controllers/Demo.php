@@ -2,7 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Demo extends CI_Controller {
-
+ public function __construct() {
+        parent::__construct();
+        $this->load->model('Mupload'); //load model Mupload yang berada di folder model
+    }
 	/**
 	 * Index Page for this controller.
 	 *
@@ -20,7 +23,8 @@ class Demo extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('demo/home');
+		$data["array_emp"] = $this->Mupload->get_allimage();
+		$this->load->view('demo/home',$data);
 	}
 	public function about()
 	{

@@ -18,7 +18,7 @@
 			  <div class="form-group">
                 <input type="text" name="textket" class="form-control" id="js-upload-files" placeholder="Keterangan Gambar" style="width:500px; margin-right: 20px;">
               </div>
-              <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+              <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload Gambar</button>
             </div>
           </form>
 
@@ -53,7 +53,7 @@ if(empty($query)){ //jika data kosong kita tampilkan pesan
 	$rowdata->ket_gbr,
 	$rowdata->tipe_gbr,
 	'<img src="'.base_url().'/uploads/thumbs/'.$rowdata->nm_gbr .'"></td>',
-	'<a href="upload/edit/'. $rowdata->id .'" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil"></i></a>',
+	'<a href="'.base_url().'admin/edit_gb/'. $rowdata->id .'" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil"></i></a>',
     '<a href="'.base_url().'admin/hapus_gb/'. $rowdata->id .'" class="btn btn-danger btn-sm" onclick="return confirm("Anda Yakin menghapus data ini?")"><i class="glyphicon glyphicon-trash"></i></a>'
 	);
 	endforeach;	
@@ -61,9 +61,7 @@ if(empty($query)){ //jika data kosong kita tampilkan pesan
 }
 
 ?>
-
           </div>
-
         </div>
       </div>
     </div> <!-- /container -->

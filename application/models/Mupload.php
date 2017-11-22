@@ -44,5 +44,12 @@ class Mupload extends CI_Model {
             return $query->row();
         }
     }
+	
+	 function get_update_gb($idg,$data) {
+        $this->db->where('id', $idg);
+        $this->db->update($this->tabel, $data);
+ 
+        return TRUE;
+    }
 
 }

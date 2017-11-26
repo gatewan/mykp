@@ -5,11 +5,13 @@ $this->load->view('demo/header');
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
+<?php
+	$carousel = count($array_emp);	 
+    for( $i = $carousel; $i>0; $i-- ) {
+		echo '<li data-target="#myCarousel" data-slide-to="'.$i.'"></li>';
+	} 
+?>          
         </ol>
-
         <!-- Wrapper for Slides -->
         <div class="carousel-inner">
 
@@ -24,8 +26,7 @@ if(empty($array_emp)){
   echo '<div class="item">';
   echo '<div class="fill" style="background-image:url('.$tag.$upath.$tag.');"></div>';
   echo '<div class="carousel-caption">';
-  echo '<h3>First Slide</h3>';
-  echo '<p>'.$d->ket_gbr.'</p>';
+  echo '<h4>'.$d->ket_gbr.'</h4>';
   echo '</div>';
   echo '</div>';
   endforeach;	

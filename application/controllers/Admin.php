@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
  public function __construct() {
         parent::__construct();
         $this->load->model('Mupload'); //load model Mupload yang berada di folder model
+		$this->load->model('Marticle'); //load model Marticle yang berada di folder model
  
     }
 	/**
@@ -32,6 +33,9 @@ class Admin extends CI_Controller {
 	{
 		$this->load->view('admin/dashboard');
 	}
+
+/* PANEL SLIDER DI SINI
+----------------------------*/	
 	public function slider(){
 		//ambil variabel URL
 		$data['query'] = $this->Mupload->get_allimage(); //query dari model
@@ -134,4 +138,60 @@ END DISABLE*/
             $msgp = $this->session->set_flashdata("pesan", "<div class=\"alert alert-success\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Keterangan gambar berhasil diupdate GAN!!!</div>"); //pesan yang tampil setelah berhasil di update
             redirect('admin/slider',$msgp);
 	}
+
+/* PANEL ARTICLE DI SINI
+----------------------------*/	
+	public function artikel(){
+		$data['query'] = $this->Marticle->get_article(); //query dari model
+		$this->load->view('admin/v_artikel',$data); //tampilan awal ketika controller upload di akses
+	}
+	public function form(){
+        //ambil variabel URL
+        $mau_ke                = $this->uri->segment(3);
+        $id                    = $this->uri->segment(4);
+         
+        //ambil variabel dari form
+		$ide					= addslashes($this->input->post('ide'));
+        $judul                  = addslashes($this->input->post('title'));
+        $kategori               = addslashes($this->input->post('category'));
+        $konten                 = addslashes($this->input->post('content'));
+
+		//mengarahkan fungsi form sesuai dengan uri segmentnya
+        if ($mau_ke == "add") {//jika uri segmentnya add
+            $data['title'] = 'Tambah Article';
+           //$data['aksi'] = 'aksi_add';
+            $this->load->view('admin/v_artikel',$data);
+        } else if ($mau_ke == "edit") {//jika uri segmentnya edit
+            $data['isi']  = $this->Marticle->get_article_byid($id);
+            $data['title'] = 'Edit Artikel';
+           //$data['aksi'] = 'aksi_edit';
+            $this->load->view('admin/e_artikel',$data);
+        } else if ($mau_ke == "aksi_add") {//jika uri segmentnya aksi_add sebagai fungsi untuk insert
+            $data = array(
+                'judul'  	=> $judul,
+                'label'  	=> $kategori,
+                'isi' 		=> $konten
+            );
+            $this->Marticle->get_insert($data); //model insert data article
+            $msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-success\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Data berhasil di insert</div>"); //pesan yang tampil setalah berhasil di insert
+            redirect('admin/artikel',$msgp);
+        } else if ($mau_ke == "aksi_edit") { //jika uri segmentnya aksi_edit sebagai fungsi untuk update
+          $data = array(				
+                'judul'  	=> $judul,
+                'label'  	=> $kategori,
+                'isi' 		=> $konten
+            );
+            $this->Marticle->get_update($ide,$data); //modal update data article
+            $msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-success\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Data berhasil diupdate</div>"); //pesan yang tampil setelah berhasil di update
+            redirect('admin/artikel',$msgp);
+        }
+    }
+	    public function hapus_artikel($id){ //fungsi hapus article sesuai dengan id
+        $this->Marticle->del_article($id);
+        $msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-danger\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Artikel berhasil dihapus</div>");
+        redirect('admin/artikel',$msgp);
+    }
+	
+	
+	
 }

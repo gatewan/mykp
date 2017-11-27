@@ -5,6 +5,7 @@ class Demo extends CI_Controller {
  public function __construct() {
         parent::__construct();
         $this->load->model('Mupload'); //load model Mupload yang berada di folder model
+		$this->load->model('Marticle'); //load model Marticle yang berada di folder model
     }
 	/**
 	 * Index Page for this controller.
@@ -28,7 +29,8 @@ class Demo extends CI_Controller {
 	}
 	public function about()
 	{
-		$this->load->view('demo/about');
+		$data["array_emp"] = $this->Marticle->get_about();
+		$this->load->view('demo/about',$data);
 	}
 	public function contact(){
 		$this->load->view('demo/contact');
@@ -45,4 +47,10 @@ class Demo extends CI_Controller {
 	public function galeri(){
 		$this->load->view('demo/galeri');
 	}
+	public function detail($id){ //fungsi detail article
+        //$data['title'] = 'Detail Artikel'; //judul title
+        $data['isi'] = $this->Marticle->get_article_byid($id); //query model article sesuai id
+        $this->load->view('demo/s_artikel',$data); //meload views detail article
+	}
+	
 }

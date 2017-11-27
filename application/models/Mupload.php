@@ -16,7 +16,7 @@ class Mupload extends CI_Model {
             return $query->result();
         }
     }
- 
+	 
     //fungsi insert ke database
     function get_insert($data){
        $this->db->insert($this->tabel, $data);

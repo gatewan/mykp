@@ -53,7 +53,7 @@
                     <a href="<?=base_url()?>admin/slider">Slider</a>
                 </li>
                 <li>
-                    <a href="#">Overview</a>
+                    <a href="<?=base_url()?>admin/artikel">Artikel</a>
                 </li>
                 <li>
                     <a href="#">Events</a>

@@ -26,6 +26,15 @@ class Marticle extends CI_Model{
             return $query->result();
         }
 	}
+	
+	function get_paket(){
+		$this->db->from($this->tabel);
+        $this->db->where('label','paket');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }
+	}
  
     function get_article_byid($id) {
         $this->db->from($this->tabel);

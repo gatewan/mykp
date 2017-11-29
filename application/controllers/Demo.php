@@ -32,12 +32,12 @@ class Demo extends CI_Controller {
 		$data["array_emp"] = $this->Marticle->get_about();
 		$this->load->view('demo/about',$data);
 	}
-	public function contact(){
-		$this->load->view('demo/contact');
+	public function paket()
+	{
+		$data["array_emp"] = $this->Marticle->get_paket();
+		$this->load->view('demo/paket',$data);
 	}
-	public function paket(){
-		$this->load->view('demo/paket');
-	}
+
 	public function booking(){
 		$this->load->view('demo/booking');
 	}
@@ -46,6 +46,9 @@ class Demo extends CI_Controller {
 	}
 	public function galeri(){
 		$this->load->view('demo/galeri');
+	}
+	public function contact(){
+		$this->load->view('demo/contact');
 	}
 	public function detail($id){ //fungsi detail article
         //$data['title'] = 'Detail Artikel'; //judul title

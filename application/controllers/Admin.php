@@ -151,10 +151,10 @@ END DISABLE*/
         $id                    = $this->uri->segment(4);
          
         //ambil variabel dari form
-		$ide					= addslashes($this->input->post('ide'));
-        $judul                  = addslashes($this->input->post('title'));
-        $kategori               = addslashes($this->input->post('category'));
-        $konten                 = addslashes($this->input->post('content'));
+		$ide					= $this->input->post('ide');
+        $judul                  = $this->input->post('title');
+        $kategori               = $this->input->post('category');
+        $konten             	= $this->input->post('content');
 
 		//mengarahkan fungsi form sesuai dengan uri segmentnya
         if ($mau_ke == "add") {//jika uri segmentnya add

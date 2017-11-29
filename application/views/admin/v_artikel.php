@@ -63,11 +63,13 @@ if(empty($query)){ //jika data kosong kita tampilkan pesan
 <textarea name="content" id="summernote"></textarea>
 <script>
 $(document).ready(function() {
- $('#summernote').summernote({
+var markupStr = $('#summernote').summernote('code');
+$('#summernote').summernote({
         placeholder: 'Hello bootstrap 4',
         tabsize: 2,
         height: 150
       });
+	  
 });
 </script>
   </div>

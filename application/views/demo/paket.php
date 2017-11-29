@@ -17,10 +17,11 @@ $this->load->view('demo/header');?>
 }
 
 .thumbnail > h4 {
-    padding: 7px 5px 0px;
+    padding: 7px 10px 0px 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: 0px;
 }
 .thumbnail h4 .info {
     position: absolute;
@@ -46,49 +47,45 @@ $this->load->view('demo/header');?>
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
 }
+.text {
+  display: block;
+  height: 388px;
+  overflow: hidden;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+}
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.panel-body {
+    padding: 10px;
+}
+.btn{
+	margin-top: 10px;
+}
 </style>
     <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <h4>
-                    Post Thumbnail List
-                </h4>
-                <img src="https://www.w3schools.com/w3images/lights.jpg" alt="...">
-				<div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper et.</p>
-                </div>
-                <a href="http://bootsnipp.com/snippets/featured/post-thumbnail-list" class="btn btn-primary col-xs-12" role="button">View Snippet</a>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <h4>
-                    Colourful Tabbed Slider Carousel
-                </h4>
-                <img src="https://www.w3schools.com/w3images/nature.jpg" alt="...">
-				<div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper et.</p>
-                </div>
-                <a href="http://bootsnipp.com/snippets/featured/colourful-tabbed-slider-carousel" class="btn btn-primary col-xs-12" role="button">View Snippet</a>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <h4>
-                    Portfolio using Panels
-                </h4>
-                <img src="https://www.w3schools.com/w3images/fjords.jpg" alt="...">
-				<div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper et.</p>
-                </div>
-                <a href="http://bootsnipp.com/snippets/featured/portfolio-using-panels" class="btn btn-primary col-xs-12" role="button">View Snippet</a>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        
+<?php
+if(empty($array_emp)){ 
+  echo "<h1>#404: Belum Ada Artikel Tentang About!!</h1>";
+}else{
+  foreach($array_emp as $d):
+    echo '       <div class="col-sm-6 col-md-4">';
+    echo '        <div class="thumbnail">';
+    echo '            <h4>';
+    echo             $d->judul;
+    echo '            </h4>';
+	echo '			<div class="panel-body text">';
+    echo 	         $d->isi;
+    echo '           </div>';
+    echo '           <a href="'.base_url().'demo/detail/'. $d->id_artikel .'" class="btn btn-primary col-xs-12" role="button">Lihat Detail</a>';
+    echo '           <div class="clearfix"></div>';
+    echo '       </div>';
+    echo '   </div>';
+  endforeach;	
+}
+?>     
     </div>
 <?php $this->load->view('demo/footer');?>

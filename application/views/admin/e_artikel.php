@@ -21,7 +21,7 @@ endforeach;
 <form action="<?=base_url()?>admin/form/aksi_edit" method="POST">
 
 <div class="form-group">
-    <label for="exampleInputEmail1">Judul</label>
+    <label for="exampleInputEmail1">ID</label>
 	 <input type="text" name="ide" class="form-control" readonly="readonly" value="<?=$id?>" />
   </div>
 <div class="form-group">
@@ -37,11 +37,13 @@ endforeach;
 <textarea name="content" id="summernote"><?=$isi?></textarea>
 <script>
 $(document).ready(function() {
+var markupStr = $('#summernote').summernote('code');
  $('#summernote').summernote({
-        placeholder: 'Hello bootstrap 4',
+		placeholder: 'Hello bootstrap 4',
         tabsize: 2,
         height: 150
       });
+
 });
 </script>
   </div>

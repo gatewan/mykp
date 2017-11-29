@@ -20,7 +20,7 @@ p {
 if(empty($isi)){ 
   echo "<center><h1>#404: Belum Ada Artikel Tentang About!!</h1></center>";
 }else{
-  echo "<div class='container'>";
+  echo "<div class='container' id='artikel' style='margin-bottom:100px;'>";
   echo heading($jud,1);
   echo $isi;
   echo br(1);

@@ -6,6 +6,7 @@ class Demo extends CI_Controller {
         parent::__construct();
         $this->load->model('Mupload'); //load model Mupload yang berada di folder model
 		$this->load->model('Marticle'); //load model Marticle yang berada di folder model
+		$this->load->model('Mbooking'); //load model Mbooking yang berada di folder model
     }
 	/**
 	 * Index Page for this controller.
@@ -38,11 +39,45 @@ class Demo extends CI_Controller {
 		$this->load->view('demo/paket',$data);
 	}
 
+/* PANEL ARTICLE DI SINI
+----------------------------*/	
 	public function booking(){
 		$this->load->view('demo/booking');
 	}
+	public function form(){
+        //ambil variabel URL
+        $mau_ke                = $this->uri->segment(3);
+         
+        //ambil variabel dari form
+        $nama                   = $this->input->post('namanya');
+        $kontak              	= $this->input->post('no_hpnya');
+		$tglbooking             = $this->input->post('tglnya');
+        $email	             	= $this->input->post('emailnya');
+		$paket	             	= $this->input->post('paketnya');
+
+		//mengarahkan fungsi form sesuai dengan uri segmentnya
+        if ($mau_ke == "add") {//jika uri segmentnya add
+            $data['title'] = 'Tambah Pesanan';
+           //$data['aksi'] = 'aksi_add';
+            $this->load->view('admin/v_artikel',$data);
+        } else if ($mau_ke == "aksi_add") {//jika uri segmentnya aksi_add sebagai fungsi untuk insert
+            $data = array(
+                'nm_user'  		=> $nama,
+                'cp_user'  		=> $kontak,
+				'tgl_booking'	=> $tglbooking,
+                'email' 		=> $email,
+				'paket'			=> $paket
+            );
+            $this->Mbooking->get_insert($data); //model insert data article
+            $msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-success\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Booking berhasil, silakan tunggu pesan konfirmasi via Email/Whatsapp/Telp/SMS </div>"); //pesan yang tampil setalah berhasil di insert
+            redirect('demo/booking',$msgp);
+        } 
+    }	
+/* END
+----------------------------*/		
 	public function agenda(){
-		$this->load->view('demo/agenda');
+		$data['query'] = $this->Mbooking->get_booking(); //query dari model
+		$this->load->view('demo/agenda',$data); //tampilan awal ketika controller upload di akses
 	}
 	public function galeri(){
 		$this->load->view('demo/galeri');

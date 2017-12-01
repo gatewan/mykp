@@ -17,76 +17,50 @@ $this->load->view('demo/header');?>
     </div>
 
     <hr />
-
     <div class="agenda">
         <div class="table-responsive">
             <table class="table table-condensed table-bordered">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Event</th>
+                        <th>Hari & Tanggal</th>
+                        <th>Waktu</th>
+                        <th>Nama</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Single event in a single day -->
+<?php
+if(empty($query)){ 
+  echo "<h1>#404: Agenda Kosong...</h1>";
+}else{
+  foreach($query as $d):
+  $tgl = $d->tgl_booking;
+  ?>
                     <tr>
                         <td class="agenda-date" class="active" rowspan="1">
-                            <div class="dayofmonth">26</div>
-                            <div class="dayofweek">Saturday</div>
-                            <div class="shortdate text-muted">July, 2014</div>
+                            <div class="dayofmonth"><?=substr($tgl,0,2)?></div>
+                            <div class="dayofweek"><?=substr($tgl,18,7)?></div>
+                            <div class="shortdate text-muted"><?=substr($tgl,3,7)?></div>
                         </td>
                         <td class="agenda-time">
-                            5:30 AM
+                            <?=substr($tgl,11,5)?>
                         </td>
                         <td class="agenda-events">
                             <div class="agenda-event">
-                                <i class="glyphicon glyphicon-repeat text-muted" title="Repeating event"></i> 
-                                Fishing
+                                <i class="glyphicon glyphicon-user text-muted" title="Repeating event"></i> 
+                                <?=$d->nm_user?>
                             </div>
                         </td>
                     </tr>
-                    
-                    <!-- Multiple events in a single day (note the rowspan) -->
-                    <tr>
-                        <td class="agenda-date" class="active" rowspan="3">
-                            <div class="dayofmonth">24</div>
-                            <div class="dayofweek">Thursday</div>
-                            <div class="shortdate text-muted">July, 2014</div>
-                        </td>
-                        <td class="agenda-time">
-                            8:00 - 9:00 AM 
-                        </td>
-                        <td class="agenda-events">
-                            <div class="agenda-event">
-                                Doctor's Appointment
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="agenda-time">
-                            10:15 AM - 12:00 PM 
-                        </td>
-                        <td class="agenda-events">
-                            <div class="agenda-event">
-                                Meeting with executives
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="agenda-time">
-                            7:00 - 9:00 PM
-                        </td>
-                        <td class="agenda-events">
-                            <div class="agenda-event">
-                                Aria's dance recital
-                            </div>
-                        </td>
-                    </tr>
+<?php  endforeach;	
+}
+?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+
 <?php
 $this->load->view('demo/footer'); ?>

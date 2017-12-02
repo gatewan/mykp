@@ -27,9 +27,9 @@ class Mbooking extends CI_Model{
         }
 	}
  
-    function get_booking_byid($id) {
+    function get_booking_byid($idb) {
         $this->db->from($this->tabel);
-        $this->db->where('id_artikel', $id);
+        $this->db->where('id_booking', $idb);
         $query = $this->db->get();
  
         if ($query->num_rows() == 1) {

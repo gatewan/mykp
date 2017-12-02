@@ -40,7 +40,7 @@ $this->table->set_heading(
 'Tanggal & Waktu',
 'Email',
 'Paket',
-'Cetak Invoice',
+'Invoice',
 'Konfirmasi',
 'Hapus'
 );
@@ -71,7 +71,7 @@ if(empty($query)){ //jika data kosong kita tampilkan pesan
 	$rowdata->tgl_booking,
 	$rowdata->email,
 	$rowdata->paket,
-	'<a href="'.base_url().'demo/detail/'. $rowdata->id_booking .'" class="btn btn-warning btn-sm" target="_blank"><i class="glyphicon glyphicon-search"></i></a>',
+	'<a href="'.base_url().'admin/invoice/'. $rowdata->id_booking .'" class="btn btn-info btn-sm" target="_blank"><i class="glyphicon glyphicon-print"></i></a>',
 	'<div id="myDiv"><a href="'.base_url().'admin/approve/'. $rowdata->id_booking .'" class="'.$indkator.'"> '.$sts.'</a></div>',
     '<a href="'.base_url().'admin/cencel/'. $rowdata->id_booking .'" class="btn btn-danger btn-sm" onclick="return confirm("Anda Yakin menghapus data ini?")"><i class="glyphicon glyphicon-trash"></i></a>'
 	);

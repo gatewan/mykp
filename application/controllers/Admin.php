@@ -216,5 +216,14 @@ END DISABLE*/
         $msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-danger\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Order telah digagalkan!!!</div>");
         redirect('admin/mod_booking',$msgp);
     }
+//END
+/*----------------------------*/
+/* PANEL Invoice
+----------------------------*/		
+	public function invoice($idb)
+	{
+		$data['query'] = $this->Mbooking->get_booking_byid($idb); //query dari model
+		$this->load->view('admin/invoice',$data);
+	}
 	
 }

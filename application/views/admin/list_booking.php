@@ -1,7 +1,4 @@
 <?php $this->load->view('admin/header'); ?>
-<!-- include summernote css/js-->
-<link href="<?=base_url()?>bower_components/summernote/dist/summernote.css" rel="stylesheet">
-<script src="<?=base_url()?>bower_components/summernote/dist/summernote.js"></script>
 <style>
 #myBtn {
     display: none;
@@ -29,35 +26,6 @@
 <?=$this->session->flashdata('pesan')?>
 <div class="panel-heading"><strong>Panel Artikel</strong> <small>Selamat menulis</small></div>
 <div class="panel-body">
-<div class="well">
-<form action="<?=base_url()?>admin/form/aksi_add" method="POST">
-<div class="form-group">
-    <label for="exampleInputEmail1">Judul</label>
-	<input name="title" type="text" class="form-control" placeholder="Judul?" />
-  </div>
-<div class="form-group">
-    <label for="exampleInputEmail1">Label</label>
-	<input name="category" type="text" class="form-control" placeholder="Label?" />
-  </div>
-<div class="form-group">
-    <label for="exampleInputEmail1">Konten</label>
-<textarea name="content" id="summernote"></textarea>
-<script>
-$(document).ready(function() {
-var markupStr = $('#summernote').summernote('code');
-$('#summernote').summernote({
-        placeholder: 'Hello bootstrap 4',
-        tabsize: 2,
-        height: 150
-      });
-	  
-});
-</script>
-  </div>
-  <button type="submit" class="btn">Submit</button>
-</form>
-</div>
-<hr style="border: solid; border-bottom: 4px solid #e3e3e3;">
 <?php
 $template = array(
         'table_open'            => '<table border="1" cellpadding="4" cellspacing="0" class="table table-bordered table table-hover">',
@@ -67,11 +35,13 @@ $this->table->set_template($template);
 
 $this->table->set_heading(
 'ID.',
-'Judul',
-'Label',
+'Nama',
+'No. Telp/HP',
 'Tanggal & Waktu',
-'Detail',
-'Edit',
+'Email',
+'Paket',
+'Cetak Invoice',
+'Konfirmasi',
 'Hapus'
 );
 
@@ -83,14 +53,27 @@ if(empty($query)){ //jika data kosong kita tampilkan pesan
 	";
 }else{
 	foreach($query as $rowdata): //-- menampilkan data dari query dengan looping
+	//membuat status tombol moderasi
+	$sts = $rowdata->status;
+	$indkator="btn btn-warning btn-sm glyphicon glyphicon-warning-sign";
+	if($sts == NULL){
+	$sts="Pending";
+	$indkator;	
+	}else{
+	$sts="Approved";
+	$indkator="btn btn-success btn-sm glyphicon glyphicon-ok";
+	}
+	//end_status tombol
 	$this->table->add_row(
-    $rowdata->id_artikel,
-	$rowdata->judul,
-	$rowdata->label,
-	$rowdata->waktu,
-	'<a href="'.base_url().'demo/detail/'. $rowdata->id_artikel .'" class="btn btn-warning btn-sm" target="_blank"><i class="glyphicon glyphicon-search"></i></a>',
-	'<a href="'.base_url().'admin/form/edit/'. $rowdata->id_artikel .'" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil"></i></a>',
-    '<a href="'.base_url().'admin/hapus_artikel/'. $rowdata->id_artikel .'" class="btn btn-danger btn-sm" onclick="return confirm("Anda Yakin menghapus data ini?")"><i class="glyphicon glyphicon-trash"></i></a>'
+    $rowdata->id_booking,
+	$rowdata->nm_user,
+	$rowdata->cp_user,
+	$rowdata->tgl_booking,
+	$rowdata->email,
+	$rowdata->paket,
+	'<a href="'.base_url().'demo/detail/'. $rowdata->id_booking .'" class="btn btn-warning btn-sm" target="_blank"><i class="glyphicon glyphicon-search"></i></a>',
+	'<div id="myDiv"><a href="'.base_url().'admin/approve/'. $rowdata->id_booking .'" class="'.$indkator.'"> '.$sts.'</a></div>',
+    '<a href="'.base_url().'admin/cencel/'. $rowdata->id_booking .'" class="btn btn-danger btn-sm" onclick="return confirm("Anda Yakin menghapus data ini?")"><i class="glyphicon glyphicon-trash"></i></a>'
 	);
 	endforeach;	
 	echo $this->table->generate();
@@ -118,5 +101,6 @@ function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
 </script>
 </body>

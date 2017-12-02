@@ -56,7 +56,7 @@
                     <a href="<?=base_url()?>admin/artikel">Artikel</a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="<?=base_url()?>admin/mod_booking">Daftar Booking</a>
                 </li>
                 <li>
                     <a href="#">About</a>

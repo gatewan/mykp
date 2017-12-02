@@ -17,7 +17,8 @@ p {
 <div class="mt-3">
 <?php
 if(empty($array_emp)){ 
-  echo "<h1>#404: Belum Ada Artikel Tentang About!!</h1>";
+  echo "<h1>#404: Belum Ada Artikel Tentang About!!</h1><br />";
+  echo "<h2>#405: Tidak Di ijinkan >1 Artikel Tentang About!!</h2>";
 }else{
   foreach($array_emp as $d):
   echo '<div>';

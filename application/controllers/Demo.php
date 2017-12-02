@@ -76,7 +76,7 @@ class Demo extends CI_Controller {
 /* END
 ----------------------------*/		
 	public function agenda(){
-		$data['query'] = $this->Mbooking->get_booking(); //query dari model
+		$data['query'] = $this->Mbooking->get_agenda(); //query dari model
 		$this->load->view('demo/agenda',$data); //tampilan awal ketika controller upload di akses
 	}
 	public function galeri(){

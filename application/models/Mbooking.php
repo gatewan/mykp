@@ -17,6 +17,15 @@ class Mbooking extends CI_Model{
             return $query->result();
         }
 	}
+	
+	function get_agenda(){
+		$this->db->from($this->tabel);
+        $this->db->where('status','approved');
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }
+	}
  
     function get_booking_byid($id) {
         $this->db->from($this->tabel);
@@ -33,14 +42,14 @@ class Mbooking extends CI_Model{
        return TRUE;
     }
  
-    function get_update($ide,$data) {
-        $this->db->where('id_artikel', $ide);
+    function get_update($idb,$data) {
+        $this->db->where('id_booking', $idb);
         $this->db->update($this->tabel, $data);
  
         return TRUE;
     }
-    function del_booking($id) {
-        $this->db->where('id_artikel', $id);
+    function del_booking($idb) {
+        $this->db->where('id_booking', $idb);
         $this->db->delete($this->tabel);
         if ($this->db->affected_rows() == 1) {
  

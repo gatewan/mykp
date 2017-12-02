@@ -7,6 +7,7 @@ class Admin extends CI_Controller {
         parent::__construct();
         $this->load->model('Mupload'); //load model Mupload yang berada di folder model
 		$this->load->model('Marticle'); //load model Marticle yang berada di folder model
+		$this->load->model('Mbooking'); //load model Marticle yang berada di folder model
  
     }
 	/**
@@ -191,7 +192,29 @@ END DISABLE*/
         $msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-danger\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Artikel berhasil dihapus</div>");
         redirect('admin/artikel',$msgp);
     }
-	
-	
+/* END
+----------------------------*/
+/* PANEL List Booking
+----------------------------*/			
+	public function mod_booking()
+	{
+		$data['query'] = $this->Mbooking->get_booking(); //query dari model
+		$this->load->view('admin/list_booking',$data);
+	}
+	public function approve()
+	{
+		$idb = $this->uri->segment(3);
+		$data = array(				
+                'status' 		=> 'approved'
+        );
+        $this->Mbooking->get_update($idb,$data); //modal update data booking
+        $msgp = $this->session->set_flashdata("pesan", "<div class=\"alert alert-success\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Order telah disetujui!!!</div>"); //pesan yang tampil setelah berhasil di update
+        redirect('admin/mod_booking',$msgp);
+	}
+		public function cencel($idb){ //fungsi hapus article sesuai dengan id
+        $this->Mbooking->del_booking($idb);
+        $msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-danger\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Order telah digagalkan!!!</div>");
+        redirect('admin/mod_booking',$msgp);
+    }
 	
 }

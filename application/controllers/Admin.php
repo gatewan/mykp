@@ -225,5 +225,53 @@ END DISABLE*/
 		$data['query'] = $this->Mbooking->get_booking_byid($idb); //query dari model
 		$this->load->view('admin/invoice',$data);
 	}
+//END
+/*----------------------------*/
+/* PANEL Email
+----------------------------*/
+	public function inbox(){
+		$this->load->view('admin/mail'); //tampilan awal ketika controller upload di akses
+	}
+		
+	public function sendmail(){
+	//ambil variabel dari form
+	$nama			= $this->input->post('nama');
+    $email          = $this->input->post('email');
+    $judul          = $this->input->post('subject');
+    $pesan          = $this->input->post('message');
 	
+	//template email dari sistem
+	$app = 'WTGI WEB';
+	$pengiriman = '#PENGIRIM: '.$nama.' #EMAIL: '.$email.' #PESAN: '.$pesan.'';
+		
+	$config = Array(
+	'protocol' => 'smtp',
+	'smtp_host' => 'ssl://smtp.googlemail.com',
+	'smtp_port' => 465,
+	'smtp_user' => 'your_mail@gmail.com', // change it to yours (DEFAULT Email For SYSTEM)
+	'smtp_pass' => 'your_email_password', // change it to yours
+	'mailtype' => 'html',
+	'charset' => 'iso-8859-1',
+	'wordwrap' => TRUE
+	);
+	
+      $this->load->library('email', $config);
+      $this->email->set_newline("\r\n");
+      $this->email->from($email,$app); // change it to yours
+      $this->email->to('yourdestinatin@gmail.com');// change it to yours (DESTINASI Email Administrator)
+      $this->email->subject($judul);
+      $this->email->message($pengiriman);
+      if($this->email->send())
+		{
+			$msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-success\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Pesan telah dikirim! </div>"); //pesan yang tampil setelah berhasil di update
+			redirect('demo/contact',$msgp);
+		}
+     else
+		{
+			//show_error($this->email->print_debugger());
+			$msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-danger\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Pesan gagal dikirim, silakan coba lagi! </div>"); //pesan yang tampil setelah berhasil di update
+			redirect('demo/contact',$msgp);
+		}
+
+	}
 }

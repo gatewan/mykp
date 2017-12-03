@@ -59,7 +59,7 @@
                     <a href="<?=base_url()?>admin/mod_booking">Moderasi</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="<?=base_url()?>admin/inbox">Inbox</a>
                 </li>
                 <li>
                     <a href="#">Services</a>

@@ -123,8 +123,8 @@ body {
 <script type="text/javascript">
 var galleryFeed = new Instafeed({
   get: 'user',
-  userId: 'YOUR ID',
-  accessToken: "YOUR TOKEN",
+  userId: 'YOUR_ID',
+  accessToken: "YOUR_TOKEN",
   //resolution: "standard_resolution",
   useHttp: "true",
   limit: '14',

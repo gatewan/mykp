@@ -5,7 +5,13 @@ $this->load->view('demo/header'); ?>
     <h3>Bootstrap Tutorial</h3>      
   </div>
   </div>
-  
+<style type="text/css">
+input#counter {
+    border: none;
+    background-color: transparent;
+    margin-left: 3px;
+}
+</style>  
 <div class="container">
 <?=$this->session->flashdata('pesan')?>
     <div class="row">
@@ -42,8 +48,9 @@ $this->load->view('demo/header'); ?>
                         <div class="form-group">
                             <label for="name">
                                 Message</label>
-                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                            <textarea onkeyup="textCounter(this,'counter',500);" name="message" id="message" class="form-control" rows="9" cols="25" required="required"
                                 placeholder="Message"></textarea>
+							<input disabled  maxlength="3" size="3" value="500" id="counter">
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -73,5 +80,16 @@ $this->load->view('demo/header'); ?>
         </div>
     </div>
 </div>
-
+<script>
+function textCounter(field,field2,maxlimit)
+{
+ var countfield = document.getElementById(field2);
+ if ( field.value.length > maxlimit ) {
+  field.value = field.value.substring( 0, maxlimit );
+  return false;
+ } else {
+  countfield.value = maxlimit - field.value.length;
+ }
+}
+</script>
 <?php $this->load->view('demo/footer'); ?>

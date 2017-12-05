@@ -9,6 +9,12 @@ class Admin extends CI_Controller {
 		$this->load->model('Marticle'); //load model Marticle yang berada di folder model
 		$this->load->model('Mbooking'); //load model Marticle yang berada di folder model
 		$this->load->model('Memail'); //load model Marticle yang berada di folder model
+	
+	if (!$this->ion_auth->logged_in())
+		{
+			$this->session->set_flashdata('message', 'You must be an admin to view this page');
+			redirect('auth/login');
+		}
  
     }
 	/**

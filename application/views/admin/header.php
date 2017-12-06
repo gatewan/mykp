@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="<?=base_url()?>auth/index">Dashboard</a>
                 </li>
                 <li>
                     <a href="<?=base_url()?>admin/slider">Slider</a>
@@ -62,10 +62,7 @@
                     <a href="<?=base_url()?>admin/inbox">Inbox</a>
                 </li>
                 <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a href="<?=base_url()?>auth/logout">Logout</a>
                 </li>
             </ul>
         </div>

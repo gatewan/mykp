@@ -35,11 +35,7 @@ class Admin extends CI_Controller {
 	 
 	public function index()
 	{
-		$this->load->view('admin/login');
-	}
-	public function dashboard()
-	{
-		$this->load->view('admin/dashboard');
+		redirect('auth/index');
 	}
 
 /* PANEL SLIDER DI SINI

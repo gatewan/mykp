@@ -21,6 +21,10 @@
 #myBtn:hover {
   background-color: #555;
 }
+textarea.sembunyi {
+    border: none;
+	background-color: #f5f5f5;
+}
 </style>
 <body>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
@@ -41,7 +45,7 @@
   </div>
 <div class="form-group">
     <label for="exampleInputEmail1">Konten</label>
-<textarea name="content" id="summernote"></textarea>
+<textarea name="content" class="sembunyi" id="summernote"></textarea>
 <script>
 $(document).ready(function() {
 var markupStr = $('#summernote').summernote('code');

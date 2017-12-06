@@ -215,6 +215,7 @@ class Auth extends CI_Controller
 			// setup the input
 			$this->data['identity'] = array('name' => 'identity',
 				'id' => 'identity',
+				'class' =>'form-control',
 			);
 
 			if ($this->config->item('identity', 'ion_auth') != 'email')
@@ -258,7 +259,7 @@ class Auth extends CI_Controller
 			{
 				// if there were no errors
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page
+				redirect("auth/login", 'refresh'); //we should display a confirmation page here instead of the login page				
 			}
 			else
 			{
@@ -301,18 +302,21 @@ class Auth extends CI_Controller
 					'name' => 'new',
 					'id' => 'new',
 					'type' => 'password',
+					'class' =>'form-control',
 					'pattern' => '^.{' . $this->data['min_password_length'] . '}.*$',
 				);
 				$this->data['new_password_confirm'] = array(
 					'name' => 'new_confirm',
 					'id' => 'new_confirm',
 					'type' => 'password',
+					'class' =>'form-control',
 					'pattern' => '^.{' . $this->data['min_password_length'] . '}.*$',
 				);
 				$this->data['user_id'] = array(
 					'name' => 'user_id',
 					'id' => 'user_id',
 					'type' => 'hidden',
+					'class' =>'form-control',
 					'value' => $user->id,
 				);
 				$this->data['csrf'] = $this->_get_csrf_nonce();

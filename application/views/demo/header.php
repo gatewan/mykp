@@ -65,7 +65,7 @@
               <a class="nav-link" href="<?=base_url()?>demo/galeri">Galeri</a>
             </li>
 			<li class="nav-item">
-              <a class="nav-link" href="<?=base_url()?>demo/contact">Blog</a>
+              <a class="nav-link" href="<?=base_url()?>demo/blog">Blog</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?=base_url()?>demo/contact">Contact</a>

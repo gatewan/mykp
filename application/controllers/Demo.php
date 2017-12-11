@@ -90,5 +90,9 @@ class Demo extends CI_Controller {
         $data['isi'] = $this->Marticle->get_article_byid($id); //query model article sesuai id
         $this->load->view('demo/s_artikel',$data); //meload views detail article
 	}
+	public function blog(){
+		$data["array_emp"] = $this->Marticle->get_blog();
+		$this->load->view('demo/blog',$data);
+	}
 	
 }

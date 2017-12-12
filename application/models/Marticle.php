@@ -36,14 +36,23 @@ class Marticle extends CI_Model{
         }
 	}
 	
-	function get_blog(){
+	function get_blog($number,$offset){
 		$ignore = array('paket', 'about');
 		$this->db->from($this->tabel);
         $this->db->where_not_in('label',$ignore);
-        $query = $this->db->get();
+		$this->db->order_by('id_artikel', 'DESC');
+        $query = $this->db->get('',$number,$offset);
         if ($query->num_rows() > 0) {
             return $query->result();
         }
+
+	}
+	function jumlah_data(){
+		$ignore = array('paket', 'about');
+		$this->db->from($this->tabel);
+        $this->db->where_not_in('label',$ignore);
+        $query = $this->db->get()->num_rows();
+		return $query;
 	}
  
     function get_article_byid($id) {

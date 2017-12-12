@@ -90,6 +90,27 @@ class Demo extends CI_Controller {
         $data['isi'] = $this->Marticle->get_article_byid($id); //query model article sesuai id
         $this->load->view('demo/s_artikel',$data); //meload views detail article
 	}
+	public function label(){
+		$from = $this->uri->segment(3);
+		$jumlah_data = $this->Marticle->jumlah_label($from);
+		$this->load->library('pagination');
+		$config['base_url'] = base_url().'Demo/blog/';
+		$config['total_rows'] = $jumlah_data;
+		$config['per_page'] = 3;
+		//customize pagination
+		$config['next_link'] = 'Older &rarr;';
+		$config['next_tag_open'] = '<li class="next">';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_link'] = '&larr; Newer';
+		$config['prev_tag_open'] = '<li class="previous">';
+		$config['prev_tag_close'] = '</li>';
+		$config['display_pages'] = FALSE;
+		//end customize pagination
+		$this->pagination->initialize($config);	
+		$data["array_emp"] = $this->Marticle->get_label($config['per_page'],$from);
+		$data["sidebar"] = $this->Marticle->get_blog($config['per_page'],$from);
+		$this->load->view('demo/blog',$data);
+	}
 	public function blog(){
 		//$data["array_emp"] = $this->Marticle->get_blog();
 		$jumlah_data = $this->Marticle->jumlah_data();
@@ -109,6 +130,7 @@ class Demo extends CI_Controller {
 		$from = $this->uri->segment(3);
 		$this->pagination->initialize($config);	
 		$data["array_emp"] = $this->Marticle->get_blog($config['per_page'],$from);
+		$data["sidebar"] = $this->Marticle->get_blog($config['per_page'],$from);
 		$this->load->view('demo/blog',$data);
 	}
 	

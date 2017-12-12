@@ -75,14 +75,17 @@ if(empty($array_emp)){
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
+<?php
+if(empty($sidebar)){ 
+  echo "<h1>#404: Belum Ada Label Untuk Blog!!</h1>";
+}else{
+  foreach($sidebar as $k):
+    echo '   <li>';
+    echo '        <a href="'.base_url().'demo/label/'. $k->label .'">'.$k->label.'</a>';
+    echo '   </li>';
+  endforeach;	
+}
+?> 
                             </ul>
                         </div>
                         <!-- /.col-lg-6 -->

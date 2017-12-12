@@ -113,13 +113,31 @@ body {
     display: block;
   }
 }
+div#instafeed-gallery-feed{
+    width: 300px;
+    margin-left: 0px;
+    float: right;
+	margin-bottom: 10px;
+}
+#btn-instafeed-load {
+    margin-left: 135px;
+}
+.col-md-4 {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 450px;
+}
 </style>
-<div class="container">
+<div class="container ">
 <?=br(3)?>
-<div id="instafeed-gallery-feed" class="gallery row no-gutter">
+<div class="row">
+  <div class="col-md-8">
+  <iframe width="780px;" height="450px;" src="//www.youtube.com/embed/videoseries?list=PLnxPnUpGiiSeTtDJF15xnL3jGdGDZcMvJ" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="col-md-4">
+  <div id="instafeed-gallery-feed" class="gallery row no-gutter">
 </div>
 <button id="btn-instafeed-load" class="btn">Load more</button>
-
 <script type="text/javascript">
 var galleryFeed = new Instafeed({
   get: 'user',
@@ -127,7 +145,7 @@ var galleryFeed = new Instafeed({
   accessToken: "YOUR_TOKEN",
   //resolution: "standard_resolution",
   useHttp: "true",
-  limit: '14',
+  limit: '6',
   //template: '<div class="col-md-4"><a href="{{image}}"><div class="img-featured-container"><div class="img-backdrop"></div><div class="description-container"><p class="caption">{{caption}}</p><span class="likes"><i class="icon ion-heart"></i> {{likes}}</span><span class="comments"><i class="icon ion-chatbubble"></i> {{comments}}</span></div><img src="{{image}}" class="img-responsive"></div></a></div>',
   target: "instafeed-gallery-feed",
   after: function() {
@@ -144,6 +162,9 @@ btnInstafeedLoad.addEventListener("click", function() {
   galleryFeed.next()
 });	
 </script>
+  </div>
+</div>
+
 </div>
     <hr />
 <?php

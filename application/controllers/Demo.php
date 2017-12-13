@@ -133,5 +133,28 @@ class Demo extends CI_Controller {
 		$data["sidebar"] = $this->Marticle->get_labelside('',$from);
 		$this->load->view('demo/blog',$data);
 	}
+	public function search(){
+		//$data["array_emp"] = $this->Marticle->get_blog();
+		$key = $this->input->get('cari');
+		$jumlah_data = $this->Marticle->jumlah_data();
+		$this->load->library('pagination');
+		$config['base_url'] = base_url().'Demo/blog/';
+		$config['total_rows'] = $jumlah_data;
+		$config['per_page'] = 3;
+		//customize pagination
+		$config['next_link'] = 'Older &rarr;';
+		$config['next_tag_open'] = '<li class="next">';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_link'] = '&larr; Newer';
+		$config['prev_tag_open'] = '<li class="previous">';
+		$config['prev_tag_close'] = '</li>';
+		$config['display_pages'] = FALSE;
+		//end customize pagination
+		$from = $this->uri->segment(3);
+		$this->pagination->initialize($config);	
+		$data["array_emp"] = $this->Marticle->blog_search($config['per_page'],$from,$key);
+		$data["sidebar"] = $this->Marticle->get_labelside('',$from);
+		$this->load->view('demo/blog',$data);
+	}
 	
 }

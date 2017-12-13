@@ -122,6 +122,17 @@ class Marticle extends CI_Model{
         return FALSE;
     }
  
+	function blog_search($number,$offset,$keyword){
+		$ignore = array('paket', 'about');
+		$this->db->from($this->tabel);
+        $this->db->where_not_in('label',$ignore);
+		$this->db->order_by('id_artikel', 'DESC');
+		$this->db->like('judul', $keyword);
+        $query = $this->db->get('',$number,$offset);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }
+	}
 }
 
 ?>

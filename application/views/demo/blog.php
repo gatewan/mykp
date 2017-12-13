@@ -59,14 +59,16 @@ if(empty($array_emp)){
                 <!-- Blog Search Well -->
                 <div class="well">
                     <h4>Blog Search</h4>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
+					<form action="<?=base_url()?>demo/search" method="GET" class="form-inline">
+                    <div class="input-group" style="width: 87%;">
+                        <input name="cari" type="text" class="form-control">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
+                            <button class="btn btn-default" type="submit">
                                 <span class="glyphicon glyphicon-search"></span>
                         </button>
                         </span>
                     </div>
+					</form>
                     <!-- /.input-group -->
                 </div>
                 <!-- Blog Categories Well -->

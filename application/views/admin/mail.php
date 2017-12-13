@@ -112,6 +112,11 @@ img {
 a.btn.btn-danger.btn-sm {
     float: right;
 }
+div#wallmessages {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 520px;
+}
 </style>
 <div class="container">
 <div class="container">

@@ -25,6 +25,35 @@ textarea.sembunyi {
     border: none;
 	background-color: #f5f5f5;
 }
+/*overflow scroll table*/
+tbody {
+    display:block;
+    height:470px;
+    overflow:auto;
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;/* even columns width , fix width of table too*/
+}
+thead {
+    width: calc( 100% - 1em )/* scrollbar is average 1em/16px width, remove it from thead width */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('https://www.w3schools.com/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 2px solid #ddd;
+  margin-bottom: 12px;
+}
 </style>
 <body>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
@@ -48,13 +77,12 @@ textarea.sembunyi {
 <textarea name="content" class="sembunyi" id="summernote"></textarea>
 <script>
 $(document).ready(function() {
-var markupStr = $('#summernote').summernote('code');
 $('#summernote').summernote({
-        placeholder: 'Hello bootstrap 4',
+        placeholder: 'Hallo gan!, selamat menulis...',
         tabsize: 2,
-        height: 150
-      });
-	  
+        height: 236
+      });  
+var markupStr = $('#summernote').summernote('code');
 });
 </script>
   </div>
@@ -62,10 +90,12 @@ $('#summernote').summernote({
 </form>
 </div>
 <hr style="border: solid; border-bottom: 4px solid #e3e3e3;">
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 <?php
 $template = array(
-        'table_open'            => '<table border="1" cellpadding="4" cellspacing="0" class="table table-bordered table table-hover">',
-        'table_close'           => '</table>'
+        'table_open'            => '<table border="1" cellpadding="4" cellspacing="0" class="table table-bordered table table-hover" id="myTable">',
+		'table_close'           => '</table>'
 );
 $this->table->set_template($template);
 
@@ -99,9 +129,7 @@ if(empty($query)){ //jika data kosong kita tampilkan pesan
 	endforeach;	
 	echo $this->table->generate();
 }
-
 ?>
-
 </div>
 </div>
 </div>
@@ -122,5 +150,17 @@ function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+</script>
+<script>
+// Fungsi SEARCH BOX
+var $rows = $('#myTable tr');
+$('#myInput').keyup(function() {
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+    
+    $rows.show().filter(function() {
+        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text.indexOf(val);
+    }).hide();
+});
 </script>
 </body>

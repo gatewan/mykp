@@ -59,6 +59,21 @@ class Marticle extends CI_Model{
         }
 
 	}
+	
+	function get_labelside($number,$offset){
+		$ignore = array('paket', 'about');
+		$this->db->from($this->tabel);
+        $this->db->where_not_in('label',$ignore);
+		$this->db->order_by('label', 'ASC');
+		$this->db->select('label');
+		$this->db->distinct();
+        $query = $this->db->get('',$number,$offset);
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        }
+
+	}
+	
 	function jumlah_data(){
 		$ignore = array('paket', 'about');
 		$this->db->from($this->tabel);
@@ -66,6 +81,7 @@ class Marticle extends CI_Model{
         $query = $this->db->get()->num_rows();
 		return $query;
 	}
+	
 	function jumlah_label($from){
 		//$ignore = array('paket', 'about');
 		$this->db->from($this->tabel);
@@ -95,6 +111,7 @@ class Marticle extends CI_Model{
  
         return TRUE;
     }
+	
     function del_article($id) {
         $this->db->where('id_artikel', $id);
         $this->db->delete($this->tabel);

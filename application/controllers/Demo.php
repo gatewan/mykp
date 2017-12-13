@@ -108,7 +108,7 @@ class Demo extends CI_Controller {
 		//end customize pagination
 		$this->pagination->initialize($config);	
 		$data["array_emp"] = $this->Marticle->get_label($config['per_page'],$from);
-		$data["sidebar"] = $this->Marticle->get_blog($config['per_page'],$from);
+		$data["sidebar"] = $this->Marticle->get_labelside('',$from);
 		$this->load->view('demo/blog',$data);
 	}
 	public function blog(){
@@ -130,7 +130,7 @@ class Demo extends CI_Controller {
 		$from = $this->uri->segment(3);
 		$this->pagination->initialize($config);	
 		$data["array_emp"] = $this->Marticle->get_blog($config['per_page'],$from);
-		$data["sidebar"] = $this->Marticle->get_blog($config['per_page'],$from);
+		$data["sidebar"] = $this->Marticle->get_labelside('',$from);
 		$this->load->view('demo/blog',$data);
 	}
 	

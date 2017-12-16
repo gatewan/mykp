@@ -55,6 +55,9 @@
                 <li>
                     <a href="<?=base_url()?>admin/artikel">Artikel</a>
                 </li>
+				<li>
+                    <a href="<?=base_url()?>admin/hrg_paket">Harga Paket</a>
+                </li>
                 <li>
                     <a href="<?=base_url()?>admin/mod_booking">Moderasi</a>
                 </li>

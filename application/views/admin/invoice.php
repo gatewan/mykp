@@ -161,7 +161,7 @@ if(empty($query)){
                   
             <tr class="heading">
                 <td>
-                    Item
+                    Paket
                 </td>
                 
                 <td>

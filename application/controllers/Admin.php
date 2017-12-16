@@ -9,6 +9,7 @@ class Admin extends CI_Controller {
 		$this->load->model('Marticle'); //load model Marticle yang berada di folder model
 		$this->load->model('Mbooking'); //load model Marticle yang berada di folder model
 		$this->load->model('Memail'); //load model Marticle yang berada di folder model
+		$this->load->model('Mpaket'); //load model Marticle yang berada di folder model
 	
 	if (!$this->ion_auth->logged_in())
 		{
@@ -294,6 +295,49 @@ END DISABLE*/
         $this->Memail->del_message($id);
         $msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-danger\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Pesan berhasil dihapus</div>");
         redirect('admin/inbox',$msgp);
+    }
+	
+	public function hrg_paket(){
+		$data['list'] = $this->Mpaket->get_paket();
+		$this->load->view('admin/harga',$data);
+	}
+	public function tbh_hrg(){
+	//ambil variabel dari form
+	$nm_pkt		= $this->input->post('nm_paket');
+    $hrg        = $this->input->post('hrg_paket');
+	$kd			= $this->input->post('id_paket');
+	$data = array(
+                'id_paket'  	=> $kd,
+                'nm_paket'  	=> $nm_pkt,
+                'harga' 		=> $hrg 
+            );
+	//sekalian insert ke database
+	$this->Mpaket->ins_paket($data); 
+	$msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-success\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Harga berhasil ditambahkan! </div>"); //pesan yang tampil setelah berhasil di update
+	redirect('admin/hrg_paket',$msgp);
+	}
+	public function edit_hrg($idh){
+		$data['old'] = $this->Mpaket->get_paket_byid($idh);
+		$this->load->view('admin/e_harga',$data);
+	}
+	public function update_hrg(){
+	//ambil variabel dari form
+	$nm_pkt		= $this->input->post('nm_paket');
+    $hrg        = $this->input->post('hrg_paket');
+	$kd			= $this->input->post('id_paket');
+	$data = array(
+                'nm_paket'  	=> $nm_pkt,
+                'harga' 		=> $hrg 
+            );
+            $this->Mpaket->upd_paket($kd,$data); //modal update data article
+            $msgp = $this->session->set_flashdata("pesan", "<div class=\"alert alert-success\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Harga berhasil diupdate! </div>"); //pesan yang tampil setelah berhasil di update
+            redirect('admin/hrg_paket',$msgp);
+	}
+	public function del_hrg($kd){ //fungsi hapus article sesuai dengan id
+		$id = $this->uri->segment(3);
+        $this->Mpaket->del_paket($kd);
+        $msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-danger\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Harga telah dihapus!</div>");
+        redirect('admin/hrg_paket',$msgp);
     }
 	
 }

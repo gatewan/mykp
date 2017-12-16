@@ -28,9 +28,9 @@ $this->load->view('demo/header');?>
   <div class="form-group">
   <label for="exampleInputEmail1">Pilihan Paket</label>
  <select name="paketnya" class="form-control">
-  <option>Paket 1</option>
-  <option>Paket 2</option>
-  <option>Paket 3</option>
+  <option value="1">Paket 1</option>
+  <option value="2">Paket 2</option>
+  <option value="3">Paket 3</option>
 </select>
   </div>  
  </div> 

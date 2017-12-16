@@ -185,7 +185,7 @@ if(empty($query)){
                 <td></td>
                 
                 <td>
-                  <?=$total?>
+                  Total Rp.<?=$total?>,-
                 </td>
             </tr>
         </table>

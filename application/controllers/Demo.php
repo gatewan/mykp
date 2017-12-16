@@ -7,6 +7,7 @@ class Demo extends CI_Controller {
         $this->load->model('Mupload'); //load model Mupload yang berada di folder model
 		$this->load->model('Marticle'); //load model Marticle yang berada di folder model
 		$this->load->model('Mbooking'); //load model Mbooking yang berada di folder model
+		$this->load->model('Mpaket'); //load model Mbooking yang berada di folder model
     }
 	/**
 	 * Index Page for this controller.
@@ -42,7 +43,8 @@ class Demo extends CI_Controller {
 /* PANEL ARTICLE DI SINI
 ----------------------------*/	
 	public function booking(){
-		$this->load->view('demo/booking');
+		$data['list'] = $this->Mpaket->get_paket();
+		$this->load->view('demo/booking',$data);
 	}
 	public function form(){
         //ambil variabel URL

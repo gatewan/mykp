@@ -227,6 +227,8 @@ END DISABLE*/
 	public function invoice($idb)
 	{
 		$data['query'] = $this->Mbooking->get_booking_byid($idb); //query dari model
+		$kdh=$data['query'][0]->paket;
+		$data['hrg'] = $this->Mpaket->get_paket_byid($kdh); //query dari model
 		$this->load->view('admin/invoice',$data);
 	}
 //END

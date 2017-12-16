@@ -117,7 +117,9 @@ if(empty($query)){
   $email = $d->email;
   $pkt = $d->paket;
   endforeach;
+  $total = $hrg[0]->harga;
 }
+
 ?>
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
@@ -183,7 +185,7 @@ if(empty($query)){
                 <td></td>
                 
                 <td>
-                   Total: $385.00
+                  <?=$total?>
                 </td>
             </tr>
         </table>

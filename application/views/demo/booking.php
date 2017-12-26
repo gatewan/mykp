@@ -29,11 +29,14 @@ $this->load->view('demo/header');?>
   <label for="exampleInputEmail1">Pilihan Paket</label>
  <select name="paketnya" class="form-control">
  <?php foreach($list as $x):?>
-  <option value="<?=$x->id_paket?>"><?=$x->id_paket?></option>
+  <option value="<?=$x->id_paket?>"><?=$x->nm_paket?></option>
  <?php endforeach;?>	
 </select>
   </div>  
- </div> 
+ </div>
+ <div class="lupa" style="margin-top: 105px;">
+<a href="http://localhost/mykp/demo/paket" target="blank">Detail Paket</a>
+</div>
   </div>
 
   <div class="row"> 

@@ -132,7 +132,7 @@ div#instafeed-gallery-feed{
 <?=br(3)?>
 <div class="row">
   <div class="col-md-8">
-  <iframe width="780px;" height="450px;" src="//www.youtube.com/embed/videoseries?list=PLnxPnUpGiiSeTtDJF15xnL3jGdGDZcMvJ" frameborder="0" allowfullscreen></iframe>
+  <iframe width="780px;" height="450px;" src="//www.youtube.com/embed/videoseries?list=UUUbXWejbVWK_vGVO2kNV2VQ" frameborder="0" allowfullscreen></iframe>
   </div>
   <div class="col-md-4">
   <div id="instafeed-gallery-feed" class="gallery row no-gutter">

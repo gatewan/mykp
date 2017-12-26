@@ -39,7 +39,7 @@ $this->table->set_heading(
 'No. Telp/HP',
 'Tanggal & Waktu',
 'Email',
-'Paket',
+'ID. Paket',
 'Invoice',
 'Konfirmasi',
 'Hapus'

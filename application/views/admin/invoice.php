@@ -118,6 +118,7 @@ if(empty($query)){
   $pkt = $d->paket;
   endforeach;
   $total = $hrg[0]->harga;
+  $nmpkt = $hrg[0]->nm_paket;
 }
 
 ?>
@@ -173,7 +174,7 @@ if(empty($query)){
             
             <tr class="item">
                 <td>
-                    <?=$pkt?>
+                    <?=$nmpkt?>
                 </td>
                 
                 <td>

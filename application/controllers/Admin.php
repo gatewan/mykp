@@ -51,9 +51,9 @@ class Admin extends CI_Controller {
 				$nmfile = "file_".time(); //nama file saya beri nama langsung dan diikuti fungsi time
                 $config['upload_path']          = './uploads/';
                 $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 100;
-                $config['max_width']            = 1900;
-                $config['max_height']           = 1080;		
+                $config['max_size']             = 0;
+                $config['max_width']            = 2000;
+                $config['max_height']           = 1100;		
 				$config['file_name'] = $nmfile; //nama yang terupload nantinya
 				
                 $this->load->library('upload', $config);

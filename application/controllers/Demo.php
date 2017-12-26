@@ -72,6 +72,27 @@ class Demo extends CI_Controller {
             );
             $this->Mbooking->get_insert($data); //model insert data article
             $msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-success\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Booking berhasil, silakan tunggu pesan konfirmasi via Email/Whatsapp/Telp/SMS </div>"); //pesan yang tampil setalah berhasil di insert
+//############SEND NOTIFICATION
+				//template email dari sistem
+				$app = 'WTGI BOOKING NOTIFICATION';
+				$pengiriman['psn'] = '
+<br/>
+Hai Admin WTGI, ada yang booking loh,<br/>
+[CLIENT: '.$nama.'],<br/>
+[EMAIL: '.$email.'],<br/>
+<br/>
+silakan cek PANEL MODERASI pada website!<br/>
+<br/>
+Salam,<br/> 
+ROBOT WEB WTGI.
+';
+      $this->load->library('email',$config);
+      $this->email->from($email,$app); // change it to yours
+      $this->email->to('YOUR_DESTINATION@gmail.com');// change it to yours (DESTINASI Email Administrator)
+      $this->email->subject($app);
+      $this->email->message($this->load->view('mail_template', $pengiriman, TRUE));
+      $this->email->send();
+//############SEND NOTIFICATION END
             redirect('demo/booking',$msgp);
         } 
     }	

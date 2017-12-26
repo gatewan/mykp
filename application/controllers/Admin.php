@@ -256,11 +256,13 @@ END DISABLE*/
 	$this->Memail->get_insert($data); 
 	//template email dari sistem
 	$app = 'WTGI WEB';
-	$pengiriman = '[#PENGIRIM: '.$nama.'] [#EMAIL: '.$email.']
-+--------------------------------------------------------------------------
-'.$pesan.'
+	$pengiriman['psn'] = '<br/>
+			    #PENGIRIM: '.$nama.',<br/>
+			    #EMAIL: '.$email.',<br/>
+			    +----------------------------------------------------------- <br/>
+			    '.$pesan.'<br/>
+
 ';
-	
 	$config = Array(
 	'protocol' => 'smtp',
 	'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -269,15 +271,15 @@ END DISABLE*/
 	'smtp_pass' => 'YOUR_PASSWORD', // change it to yours
 	'mailtype' => 'html',
 	'charset' => 'iso-8859-1',
+	'crlf' => '\r\n',
+	'newline' => '\r\n',
 	'wordwrap' => TRUE
 	);
-	
-      $this->load->library('email', $config);
-      $this->email->set_newline("\r\n");
+	  $this->load->library('email',$config);
       $this->email->from($email,$app); // change it to yours
       $this->email->to('YOUR_DESTINATION@gmail.com');// change it to yours (DESTINASI Email Administrator)
       $this->email->subject($judul);
-      $this->email->message($pengiriman);
+      $this->email->message($this->load->view('mail_template', $pengiriman, TRUE));
       if($this->email->send())
 		{
 			$msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-success\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Pesan telah dikirim! </div>"); //pesan yang tampil setelah berhasil di update

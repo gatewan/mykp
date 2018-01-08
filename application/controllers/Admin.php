@@ -36,9 +36,8 @@ class Admin extends CI_Controller {
 	 
 	public function index()
 	{
-		redirect('auth/index');
+		$this->load->view('admin/petunjuk');
 	}
-
 /* PANEL SLIDER DI SINI
 ----------------------------*/	
 	public function slider(){

@@ -1,3 +1,12 @@
+<?php
+$this->load->view('admin/header');?>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+<!--ION AUTH PUNYA-->					
 <h1><?php echo lang('deactivate_heading');?></h1>
 <p><?php echo sprintf(lang('deactivate_subheading'), $user->username);?></p>
 
@@ -16,3 +25,22 @@
   <p><?php echo form_submit('submit', lang('deactivate_submit_btn'));?></p>
 
 <?php echo form_close();?>
+<!--ION AUTH PUNYA-->
+                   </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+</html>

@@ -78,6 +78,7 @@ thead {
 <script>
 $(document).ready(function() {
 $('#summernote').summernote({
+		maximumImageFileSize: 1572864, // 1.5MB
         placeholder: 'Hallo gan!, selamat menulis...',
         tabsize: 2,
         height: 236
@@ -91,7 +92,7 @@ var markupStr = $('#summernote').summernote('code');
 </div>
 <hr style="border: solid; border-bottom: 4px solid #e3e3e3;">
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for articles.." title="Type in a name">
 <?php
 $template = array(
         'table_open'            => '<table border="1" cellpadding="4" cellspacing="0" class="table table-bordered table table-hover" id="myTable">',

@@ -10,6 +10,7 @@ class Memail extends CI_Model{
     public function get_message(){
 	//return $this->db->get("artikel"); //cara 1
 	 $this->db->from($this->tabel);
+	 $this->db->order_by('id_pesan', 'DESC');
         $query = $this->db->get();
  
         //cek apakah ada data

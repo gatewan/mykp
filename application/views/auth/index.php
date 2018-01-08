@@ -5,11 +5,7 @@ $this->load->view('admin/header');?>
         <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    <div class="col-lg-12">                        
 <!--ION AUTH PUNYA -->
 <h1><?php echo lang('index_heading');?></h1>
 <p><?php echo lang('index_subheading');?></p>
@@ -36,12 +32,12 @@ $this->load->view('admin/header');?>
                 <?php endforeach?>
 			</td>
 			<td><?php echo ($user->active) ? anchor("auth/deactivate/".$user->id, lang('index_active_link')) : anchor("auth/activate/". $user->id, lang('index_inactive_link'));?></td>
-			<td><?php echo anchor("auth/edit_user/".$user->id, 'Edit') ;?></td>
+			<td><?php echo anchor("auth/edit_user/".$user->id, 'Edit') ;?> | <?php echo anchor("auth/delete_user/".$user->id, 'Delete') ;?></td>
 		</tr>
 	<?php endforeach;?>
 </table>
 
-<p><?php echo anchor('auth/create_user', lang('index_create_user_link'))?> | <?php echo anchor('auth/create_group', lang('index_create_group_link'))?></p>
+<p><?php echo anchor('auth/create_user', lang('index_create_user_link'),array('class' => 'btn btn-primary'))?> <?php //echo anchor('auth/create_group', lang('index_create_group_link'))?></p>
 <!--ION AUTH END -->
                     </div>
                 </div>

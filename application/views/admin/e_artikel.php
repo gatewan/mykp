@@ -37,13 +37,13 @@ endforeach;
 <textarea name="content" id="summernote"><?=$isi?></textarea>
 <script>
 $(document).ready(function() {
-var markupStr = $('#summernote').summernote('code');
- $('#summernote').summernote({
-		placeholder: 'Hello bootstrap 4',
+$('#summernote').summernote({
+		maximumImageFileSize: 1572864, // 1.5MB
+        placeholder: 'Hallo gan!, selamat menulis...',
         tabsize: 2,
-        height: 150
-      });
-
+        height: 236
+      });  
+var markupStr = $('#summernote').summernote('code');
 });
 </script>
   </div>

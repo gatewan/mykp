@@ -1,10 +1,5 @@
 <?php
 $this->load->view('demo/header');?>
-  <div class="jumbotron">
-	<div class="container">
-    <h3>Bootstrap Tutorial</h3>      
-  </div>
-  </div>
 <main role="main" class="container">
 <style>
 /* Custom page CSS PAKET
@@ -49,7 +44,7 @@ $this->load->view('demo/header');?>
 }
 .text {
   display: block;
-  height: 388px;
+  height: 395px;
   overflow: hidden;
   white-space: pre-wrap;
   text-overflow: ellipsis;
@@ -65,8 +60,11 @@ img {
 .btn{
 	margin-top: 10px;
 }
+.footer{
+	bottom:0px;
+}
 </style>
-    <div class="row">
+    <div class="row" style="margin-top: 70px; margin-bottom: 30px;">
 <?php
 if(empty($array_emp)){ 
   echo "<h1>#404: Belum Ada Artikel Tentang About!!</h1>";
@@ -80,7 +78,7 @@ if(empty($array_emp)){
 	echo '			<div class="panel-body text">';
     echo 	         $d->isi;
     echo '           </div>';
-    echo '           <a href="'.base_url().'demo/detail/'. $d->id_artikel .'" class="btn btn-primary col-xs-12" role="button">Lihat Detail</a>';
+    echo '           <a href="'.base_url().'demo/d_paket/'. $d->id_artikel .'" class="btn btn-primary col-xs-12" role="button">Lihat Detail</a>';
     echo '           <div class="clearfix"></div>';
     echo '       </div>';
     echo '   </div>';

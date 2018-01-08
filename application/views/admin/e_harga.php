@@ -57,7 +57,7 @@ endforeach;
       </div>
 	  </div>
     <div class="col-md-6">
-	Silakan edit...
+	<span class="glyphicon glyphicon-hand-left"> <i>Monggo... silakan diedit.</i></span>
 	</div>
 	</fieldset>
   </form>

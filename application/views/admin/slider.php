@@ -4,7 +4,7 @@
 <script type="text/javascript" src="<?=base_url()?>assets/js/upload.js"></script>
 <div class="container">
       <div class="panel panel-default">
-        <div class="panel-heading"><strong>Upload Files</strong> <small>Bootstrap files upload</small></div>
+        <div class="panel-heading"><strong>Upload Files</strong> <small>mykp files upload</small></div>
         <div class="panel-body">
 		<?=$this->session->flashdata('pesan')?>
           <!-- Standar Form -->
@@ -23,7 +23,7 @@
           </form>
 
           <!-- Drop Zone -->
-          <h4>Or drag and drop files below</h4>
+          <hr>
 <?php
 $template = array(
         'table_open'            => '<table border="1" cellpadding="4" cellspacing="0" class="table table-bordered table table-hover">',

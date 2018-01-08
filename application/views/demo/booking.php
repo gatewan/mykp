@@ -1,8 +1,13 @@
 <?php
 $this->load->view('demo/header');?>
-  <div class="jumbotron">
+<style>
+.footer{
+	bottom:0px;
+}
+</style>
+  <div class="jumbotron" style="margin-bottom: 70px;">
 	<div class="container">
-    <h3>Bootstrap Tutorial</h3>      
+    <h3>Ayo buruan, jangan sampai ketinggalan!</h3>      
   </div>
   </div>
 <div class="container">
@@ -17,6 +22,15 @@ $this->load->view('demo/header');?>
   <div class="form-group">
     <label for="exampleInputEmail1">Phone Number</label>
     <input type="text" name="no_hpnya" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone Number">
+  </div>
+  <div class="form-group">
+			 <label for="exampleInputEmail1">Tentukan Tanggal & Waktu</label>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' name="tglnya" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
   </div>
   </div>
   
@@ -33,26 +47,18 @@ $this->load->view('demo/header');?>
  <?php endforeach;?>	
 </select>
   </div>  
+  <div class="form-group">
+  <label for="exampleInputEmail1">Jumlah Peserta</label>
+ <input type="text" name="jmlpeserta" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Angka">
+  </div>  
  </div>
  <div class="lupa" style="margin-top: 105px;">
 <a href="http://localhost/mykp/demo/paket" target="blank">Detail Paket</a>
 </div>
   </div>
-
-  <div class="row"> 
+  
 <div class="container">
     <div class="row">
-        <div class='col-sm-5'>
-            <div class="form-group">
-			 <label for="exampleInputEmail1">Tentukan Tanggal & Waktu</label>
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' name="tglnya" class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
    <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker(
@@ -63,7 +69,6 @@ $this->load->view('demo/header');?>
             });
         </script>
     </div>
-</div>
 </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

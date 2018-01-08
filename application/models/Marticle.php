@@ -36,6 +36,15 @@ class Marticle extends CI_Model{
         }
 	}
 	
+	function get_address(){
+		$this->db->from($this->tabel);
+        $this->db->where('label','address');
+        $query = $this->db->get();
+        if ($query->num_rows() == 1) {
+            return $query->result();
+        }
+	}
+	
 	function get_label($number,$offset){
 		//$ignore = array('paket', 'about');
 		$this->db->from($this->tabel);
@@ -49,7 +58,7 @@ class Marticle extends CI_Model{
 	}
 	
 	function get_blog($number,$offset){
-		$ignore = array('paket', 'about');
+		$ignore = array('paket', 'about', 'address');
 		$this->db->from($this->tabel);
         $this->db->where_not_in('label',$ignore);
 		$this->db->order_by('id_artikel', 'DESC');
@@ -61,7 +70,7 @@ class Marticle extends CI_Model{
 	}
 	
 	function get_labelside($number,$offset){
-		$ignore = array('paket', 'about');
+		$ignore = array('paket', 'about', 'address');
 		$this->db->from($this->tabel);
         $this->db->where_not_in('label',$ignore);
 		$this->db->order_by('label', 'ASC');

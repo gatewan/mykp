@@ -39,6 +39,12 @@ class Demo extends CI_Controller {
 		$data["array_emp"] = $this->Marticle->get_paket();
 		$this->load->view('demo/paket',$data);
 	}
+	public function d_paket($id)
+	{
+        //$data['title'] = 'Detail Artikel'; //judul title
+        $data['isi'] = $this->Marticle->get_article_byid($id); //query model article sesuai id
+        $this->load->view('demo/s_paket',$data); //meload views detail article
+	}
 
 /* PANEL ARTICLE DI SINI
 ----------------------------*/	
@@ -56,6 +62,7 @@ class Demo extends CI_Controller {
 		$tglbooking             = $this->input->post('tglnya');
         $email	             	= $this->input->post('emailnya');
 		$paket	             	= $this->input->post('paketnya');
+		$peserta             	= $this->input->post('jmlpeserta');
 
 		//mengarahkan fungsi form sesuai dengan uri segmentnya
         if ($mau_ke == "add") {//jika uri segmentnya add
@@ -68,7 +75,8 @@ class Demo extends CI_Controller {
                 'cp_user'  		=> $kontak,
 				'tgl_booking'	=> $tglbooking,
                 'email' 		=> $email,
-				'paket'			=> $paket
+				'paket'			=> $paket,
+				'jml_peserta'	=> $peserta
             );
             $this->Mbooking->get_insert($data); //model insert data article
             $msgp=$this->session->set_flashdata("pesan", "<div class=\"alert alert-success\" id=\"alert\"><i class=\"glyphicon glyphicon-ok\"></i> Booking berhasil, silakan tunggu pesan konfirmasi via Email/Whatsapp/Telp/SMS </div>"); //pesan yang tampil setalah berhasil di insert
@@ -106,7 +114,8 @@ ROBOT WEB WTGI.
 		$this->load->view('demo/galeri');
 	}
 	public function contact(){
-		$this->load->view('demo/contact');
+		$data["array_emp"] = $this->Marticle->get_address();
+		$this->load->view('demo/contact',$data);
 	}
 	public function detail($id){ //fungsi detail article
         //$data['title'] = 'Detail Artikel'; //judul title

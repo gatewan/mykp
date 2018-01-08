@@ -1,9 +1,6 @@
 <?php
 $this->load->view('demo/header'); ?>
-  <div class="jumbotron">
-	<div class="container">
-    <h3>Bootstrap Tutorial</h3>      
-  </div>
+  <div class="jumbotron" style="padding-bottom: 0px;">
   </div>
 <style type="text/css">
 input#counter {
@@ -11,14 +8,20 @@ input#counter {
     background-color: transparent;
     margin-left: 3px;
 }
+h4{
+    margin-bottom: 7px;
+}
+.footer{
+	bottom:0px;
+}
 </style>  
 <div class="container">
 <?=$this->session->flashdata('pesan')?>
-    <div class="row">
+    <div class="row" style="margin-top: 20px; margin-bottom: -15px;">
         <div class="col-md-8">
-            <div class="well well-sm">
+            <div class="well well-sm" style="height: 355px;">
                 <form action="<?=base_url()?>admin/sendmail" method="POST">
-                <div class="row">
+                <div class="row" style="padding-top: 16px;">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name">
@@ -63,22 +66,25 @@ input#counter {
         </div>
         <div class="col-md-4">
             <form>
-            <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
-            <address>
-                <strong>Twitter, Inc.</strong><br>
-                795 Folsom Ave, Suite 600<br>
-                San Francisco, CA 94107<br>
-                <abbr title="Phone">
-                    P:</abbr>
-                (123) 456-7890
-            </address>
-            <address>
-                <strong>Full Name</strong><br>
-                <a href="mailto:#">first.last@example.com</a>
-            </address>
+           <!-- <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend> -->
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1977.5385245217421!2d110.19817735794159!3d-7.566578848635824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a8c2fba5125e9%3A0x683c4bc19cab6d13!2sWisata+Tubing+Gending+Indah!5e0!3m2!1sid!2sid!4v1514761362972" width="360" height="355" frameborder="0" style="border:0" allowfullscreen></iframe>    
+
             </form>
         </div>
     </div>
+<hr>
+<center>
+<?php
+if(empty($array_emp)){ 
+  echo "<h4>#404: Alamat belum tertera!!</h4>";
+  echo "<h4>#405: Tidak Di ijinkan >1 alamat!!</h4>";
+}else{
+  foreach($array_emp as $d):
+  echo $d->isi;
+  endforeach;	
+}
+?>
+</center>
 </div>
 <script>
 function textCounter(field,field2,maxlimit)
@@ -92,4 +98,5 @@ function textCounter(field,field2,maxlimit)
  }
 }
 </script>
+
 <?php $this->load->view('demo/footer'); ?>

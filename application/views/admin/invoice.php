@@ -116,8 +116,10 @@ if(empty($query)){
   $cp = $d->cp_user;
   $email = $d->email;
   $pkt = $d->paket;
+  $psrta = $d->jml_peserta;
   endforeach;
-  $total = $hrg[0]->harga;
+  $satuan = $hrg[0]->harga;
+  $total = $satuan*$psrta;
   $nmpkt = $hrg[0]->nm_paket;
 }
 
@@ -131,15 +133,16 @@ if(empty($query)){
                             <td class="title">
                                 <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
                             </td>
-                            
-                            <td>
-                                Invoice #:<?=$id?><br>
-                                Created: <?=date("l, d-m-Y")?><br>
-                                Due: Until tomorrow, at 08:00 pm
-                            </td>
+                           
                         </tr>
                     </table>
                 </td>
+				<td></td>
+                            <td>
+                                Invoice #:<?=$id?><br>
+                                Created: <?=date("l, d-m-Y")?><br>
+                                Due: Tomorrow, at 08:00 pm
+                            </td>				
             </tr>
             
             <tr class="information">
@@ -150,23 +153,28 @@ if(empty($query)){
                                 WTGI Adventure<br>
                                 Desa Gadungan, Pasuruhan, Mertoyudan<br>
                                 Magelang
-                            </td>
-                            
+                            </td>                  
+                        </tr>
+                    </table>
+                </td>
+				<td></td>
                             <td>
                                 Guest Name: <?=$nm?><br>
                                 CP: <?=$cp?><br>
                                 Email: <?=$email?>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
+                            </td>          
+		  </tr>
                   
             <tr class="heading">
                 <td>
                     Paket
                 </td>
-                
+				<td style="text-align: left; width: 150px;">
+                    Harga paket
+                </td>  				
+				<td style="text-align: left;">
+                    Jumlah Peserta
+                </td>  
                 <td>
                     Date/Time of Booking
                 </td>
@@ -176,7 +184,12 @@ if(empty($query)){
                 <td>
                     <?=$nmpkt?>
                 </td>
-                
+                 <td style="text-align: left; width: 150px;">
+                    <?=$satuan?>
+                </td>   				
+                 <td style="text-align: left;">
+                    <?=$psrta?>
+                </td>               
                 <td>
                     <?=$tgl?>
                 </td>
@@ -184,9 +197,10 @@ if(empty($query)){
             
             <tr class="total">
                 <td></td>
-                
+                <td></td>
+				<td></td>
                 <td>
-                  Total Rp.<?=$total?>,-
+                  <b>Total Rp.<?=$total?>,-</b>
                 </td>
             </tr>
         </table>

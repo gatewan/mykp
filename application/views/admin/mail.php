@@ -140,7 +140,7 @@ if(empty($query)){
     				<div class="message-item" id="m16">
 						<div class="message-inner">
 							<div class="message-head clearfix">
-								<div class="avatar pull-left"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a></div>
+								<div class="avatar pull-left glyphicon glyphicon-user"></div>
 								<div class="user-detail">
 									<h5 class="handle"><?=$nm?></h5>
 									<div class="post-meta">

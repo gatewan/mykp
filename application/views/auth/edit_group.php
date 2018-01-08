@@ -1,3 +1,13 @@
+<?php
+$this->load->view('admin/header');?>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+					<div class="col-md-6">
+<!--ION AUTH PUNYA-->	
 <h1><?php echo lang('edit_group_heading');?></h1>
 <p><?php echo lang('edit_group_subheading');?></p>
 
@@ -18,3 +28,23 @@
       <p><?php echo form_submit('submit', lang('edit_group_submit_btn'));?></p>
 
 <?php echo form_close();?>
+<!--ION AUTH PUNYA-->
+</div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+</html>

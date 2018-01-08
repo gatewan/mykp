@@ -24,7 +24,7 @@
 <div class="container">
 <div class="panel panel-default">
 <?=$this->session->flashdata('pesan')?>
-<div class="panel-heading"><strong>Panel Artikel</strong> <small>Selamat menulis</small></div>
+<div class="panel-heading"><strong>Panel Moderasi</strong> <small>mykp moderation</small></div>
 <div class="panel-body">
 <?php
 $template = array(
@@ -39,7 +39,8 @@ $this->table->set_heading(
 'No. Telp/HP',
 'Tanggal & Waktu',
 'Email',
-'ID. Paket',
+'Paket',
+'Peserta',
 'Invoice',
 'Konfirmasi',
 'Hapus'
@@ -71,6 +72,7 @@ if(empty($query)){ //jika data kosong kita tampilkan pesan
 	$rowdata->tgl_booking,
 	$rowdata->email,
 	$rowdata->paket,
+	$rowdata->jml_peserta,
 	'<a href="'.base_url().'admin/invoice/'. $rowdata->id_booking .'" class="btn btn-info btn-sm" target="_blank"><i class="glyphicon glyphicon-print"></i></a>',
 	'<div id="myDiv"><a href="'.base_url().'admin/approve/'. $rowdata->id_booking .'" class="'.$indkator.'"> '.$sts.'</a></div>',
     '<a href="'.base_url().'admin/cencel/'. $rowdata->id_booking .'" class="btn btn-danger btn-sm" onclick="return confirm("Anda Yakin menghapus data ini?")"><i class="glyphicon glyphicon-trash"></i></a>'

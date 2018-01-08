@@ -31,11 +31,11 @@ class Auth extends CI_Controller
 			// redirect them to the login page
 			redirect('auth/login', 'refresh');
 		}
-		else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+/*		else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
 		{
 			// redirect them to the home page because they must be an administrator to view this
 			return show_error('You must be an administrator to view this page.');
-		}
+		} */
 		else
 		{
 			// set the flash data error message if there is one
@@ -74,7 +74,7 @@ class Auth extends CI_Controller
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('auth/index', 'refresh');
+				redirect('admin/index', 'refresh');
 			}
 			else
 			{
@@ -402,6 +402,21 @@ class Auth extends CI_Controller
 	 *
 	 * @param int|string|null $id The user ID
 	 */
+	public function delete_user($id)
+	{
+		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+		{
+			// redirect them to the home page because they must be an administrator to view this
+			return show_error('You must be an administrator to view this page.');
+		}
+		else
+		{
+			$this->ion_auth->delete_user($id);
+			redirect('auth', 'refresh');
+		}
+		
+	}
+	 
 	public function deactivate($id = NULL)
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
@@ -834,6 +849,7 @@ class Auth extends CI_Controller
 			'name'    => 'group_name',
 			'id'      => 'group_name',
 			'type'    => 'text',
+			'class' =>'form-control',
 			'value'   => $this->form_validation->set_value('group_name', $group->name),
 			$readonly => $readonly,
 		);
@@ -841,6 +857,7 @@ class Auth extends CI_Controller
 			'name'  => 'group_description',
 			'id'    => 'group_description',
 			'type'  => 'text',
+			'class' =>'form-control',
 			'value' => $this->form_validation->set_value('group_description', $group->description),
 		);
 

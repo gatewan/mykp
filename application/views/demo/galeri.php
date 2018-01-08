@@ -127,10 +127,13 @@ div#instafeed-gallery-feed{
     overflow-x: hidden;
     height: 450px;
 }
+.footer{
+	bottom:0px;
+}
 </style>
 <div class="container ">
 <?=br(3)?>
-<div class="row">
+<div class="row" style="margin-top: 30px; margin-bottom: 50px;">
   <div class="col-md-8">
   <iframe width="780px;" height="450px;" src="//www.youtube.com/embed/videoseries?list=UUUbXWejbVWK_vGVO2kNV2VQ" frameborder="0" allowfullscreen></iframe>
   </div>
@@ -166,6 +169,5 @@ btnInstafeedLoad.addEventListener("click", function() {
 </div>
 
 </div>
-    <hr />
 <?php
 $this->load->view('demo/footer'); ?>
